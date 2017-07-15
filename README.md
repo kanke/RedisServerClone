@@ -29,4 +29,5 @@ All errors are handled and it you type a command that is incomplete, you get the
 
 [Redis data type introduction](https://redis.io/topics/data-types-intro)
 
-
+####NOTE:#### 
+Program is not concurrent and the problem statement explicitly stated not to use locks.
