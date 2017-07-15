@@ -6,31 +6,35 @@ import java.util.TimerTask;
 /**
  * Created by kishaku on 14/07/2017.
  */
-public class CommandsDelegator {
+public class CommandDelegator {
 
     private static Map<String, String> hashMap = new HashMap();
 
     public void delegate(String[] splitString) {
-        String command = splitString[0].toUpperCase();
+        String command = splitString[0];
 
-        if (command.equals(Command.GET)) {
+        if (command.equalsIgnoreCase(Command.GET.toString())) {
             getCommand(splitString);
 
-        } else if (command.equals(Command.SET)) {
+        } else if (command.equalsIgnoreCase(Command.SET.toString())) {
             setCommand(splitString);
 
-        } else if (command.equals(Command.EXPIRE)) {
+        } else if (command.equalsIgnoreCase(Command.EXPIRE.toString())) {
             expireCommand(splitString);
 
-        } else if (command.equals(Command.DEL)) {
+        } else if (command.equalsIgnoreCase(Command.DEL.toString())) {
             delCommand(splitString);
 
-        } else if (command.equals(Command.EXIST)) {
+        } else if (command.equalsIgnoreCase(Command.EXIST.toString())) {
             existCommand(splitString);
         }
     }
 
     private static void existCommand(String[] splitString) {
+        if (splitString.length < 2) {
+            System.out.println("ERROR: not enough parameters");
+            return;
+        }
         String key = splitString[1];
         if (hashMap.containsKey(key)) {
             System.out.println("1 - It exists!");
@@ -40,18 +44,21 @@ public class CommandsDelegator {
     }
 
     private static void setCommand(String[] splitString) {
-
-        String key = splitString[1];
         if (splitString.length < 3) {
             System.out.println("ERROR: not enough parameters");
             return;
         }
+        String key = splitString[1];
         String newValue = splitString[2];
         hashMap.put(key, newValue);
         System.out.println("OK");
     }
 
     private static void expireCommand(String[] splitString) {
+        if (splitString.length < 3) {
+            System.out.println("ERROR: not enough parameters");
+            return;
+        }
         final String key = splitString[1];
         long timer = Long.parseLong(splitString[2]);
         Timer newTask = new Timer();
@@ -65,13 +72,20 @@ public class CommandsDelegator {
     }
 
     private static void delCommand(String[] splitString) {
+        if (splitString.length < 2) {
+            System.out.println("ERROR: not enough parameters");
+            return;
+        }
         String key = splitString[1];
         hashMap.remove(key);
         System.out.println("OK");
     }
 
     private static void getCommand(String[] splitString) {
-
+        if (splitString.length < 2) {
+            System.out.println("ERROR: not enough parameters");
+            return;
+        }
         String key = splitString[1];
         String value = hashMap.get(key);
         System.out.println(value);

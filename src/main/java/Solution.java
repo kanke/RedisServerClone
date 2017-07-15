@@ -6,14 +6,14 @@ import java.util.*;
 
 public class Solution {
 
-    private static CommandsDelegator commandsDelegator;
+    private static CommandDelegator commandDelegator = new CommandDelegator();
 
     public static void main(String args[]) throws Exception {
         Scanner scanner = new Scanner(System.in);
         while (scanner.hasNextLine()) {
             String line = scanner.nextLine();
             String[] splitString = line.split("\\s+");
-            commandsDelegator.delegate(splitString);
+            commandDelegator.delegate(splitString);
         }
     }
 
