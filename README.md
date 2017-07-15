@@ -1,8 +1,8 @@
-#A program that mimics Redis Keys and String commands using Java Map#
+# A program that mimics Redis Keys and String commands using Java Map # 
  Redis is a data structures server, supporting different kinds of values. What this means is that, while in traditional key-value stores you associated string keys to string values, in Redis the value is not limited to a simple string, but can also hold more complex data structures.
 Redis keys commands are used for managing keys in Redis and Redis strings commands are used for managing string values in Redis.
 
-##Commands Supported:##
+## Commands Supported: ##
 
 All errors are handled and it you type a command that is incomplete, you get the message - *"ERROR: not enough parameters"*
 
@@ -23,11 +23,11 @@ All errors are handled and it you type a command that is incomplete, you get the
 
 
 ![Running Redis Server code](/test.png)
-###Further Reading### 
+### Further Reading ### 
 
 [Redis Expire command](https://redis.io/commands/expire)
 
 [Redis data type introduction](https://redis.io/topics/data-types-intro)
 
-####NOTE:#### 
+#### NOTE: #### 
 Program is not concurrent and the problem statement explicitly stated not to use locks.
