@@ -1,3 +1,5 @@
+import lombok.NoArgsConstructor;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Timer;
@@ -6,6 +8,8 @@ import java.util.TimerTask;
 /**
  * Created by kishaku on 14/07/2017.
  */
+
+
 public class CommandDelegator {
 
     private static Map<String, String> hashMap = new HashMap();
